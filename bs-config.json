@@ -1,0 +1,10 @@
+{
+  "server": {
+    "baseDir": [
+      "./",
+      "./src",
+      "./build/contracts",
+      "./project-6/node_modules/web3/dist"
+    ]
+  }
+}
