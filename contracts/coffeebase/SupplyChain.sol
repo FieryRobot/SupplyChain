@@ -79,7 +79,7 @@ contract SupplyChain is
 
     // Define a modifer that verifies the Caller
     modifier verifyCaller(address _address) {
-        require(msg.sender == _address);
+        require(msg.sender == _address, "Caller doesn't match expected caller");
         _;
     }
 
@@ -141,19 +141,28 @@ contract SupplyChain is
 
     // Define a modifier that checks if an item.state of a upc is Shipped
     modifier shipped(uint256 _upc) {
-        require(items[_upc].itemState == State.Shipped);
+        require(
+            items[_upc].itemState == State.Shipped,
+            "Should be in shipped state"
+        );
         _;
     }
 
     // Define a modifier that checks if an item.state of a upc is Received
     modifier received(uint256 _upc) {
-        require(items[_upc].itemState == State.Received);
+        require(
+            items[_upc].itemState == State.Received,
+            "Should be in received state"
+        );
         _;
     }
 
     // Define a modifier that checks if an item.state of a upc is Purchased
     modifier purchased(uint256 _upc) {
-        require(items[_upc].itemState == State.Purchased);
+        require(
+            items[_upc].itemState == State.Purchased,
+            "Should be in purchased state"
+        );
         _;
     }
 
@@ -183,6 +192,11 @@ contract SupplyChain is
         string memory _originFarmLongitude,
         string memory _productNotes
     ) public onlyFarmer {
+        require(
+            isFarmer(_originFarmerID),
+            "Farmer address is not a valid farmer"
+        );
+
         // Add the new item as part of Harvest
 
         items[_upc] = Item({
@@ -213,6 +227,7 @@ contract SupplyChain is
     function processItem(uint256 _upc)
         public
         harvested(_upc)
+        onlyFarmer
         verifyCaller(items[_upc].originFarmerID)
     {
         // Update the appropriate fields
@@ -225,6 +240,7 @@ contract SupplyChain is
     function packItem(uint256 _upc)
         public
         processed(_upc)
+        onlyFarmer
         verifyCaller(items[_upc].originFarmerID)
     {
         // Update the appropriate fields
@@ -237,6 +253,7 @@ contract SupplyChain is
     function sellItem(uint256 _upc, uint256 _price)
         public
         packed(_upc)
+        onlyFarmer
         verifyCaller(items[_upc].originFarmerID)
     {
         items[_upc].productPrice = _price;
@@ -252,7 +269,7 @@ contract SupplyChain is
         payable
         forSale(_upc)
         paidEnough(items[_upc].productPrice)
-        checkValue(_upc)
+        //checkValue(_upc)
         onlyDistributor
     {
         // Update the appropriate fields - ownerID, distributorID, itemState
