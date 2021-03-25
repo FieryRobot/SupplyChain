@@ -44,11 +44,11 @@ contract('SupplyChain', function (accounts) {
   ///(9) 0xbd3ff2e3aded055244d66544c9c059fa0851da44
 
   console.log("ganache-cli accounts used here...")
-  console.log("Contract Owner: accounts[0] ", accounts[0])
-  console.log("Farmer: accounts[1] ", accounts[1])
-  console.log("Distributor: accounts[2] ", accounts[2])
-  console.log("Retailer: accounts[3] ", accounts[3])
-  console.log("Consumer: accounts[4] ", accounts[4])
+  console.log("Contract Owner: ", accounts[0])
+  console.log("Farmer: ", originFarmerID)
+  console.log("Distributor: ", distributorID)
+  console.log("Retailer: ", retailerID)
+  console.log("Consumer: ", consumerID)
 
   before(async () => {
     const supplyChain = await SupplyChain.deployed()
@@ -165,7 +165,7 @@ contract('SupplyChain', function (accounts) {
     })
 
     // Mark an item as Sold by calling function buyItem()
-    await supplyChain.buyItem(upc, { from: distributorID, value: productPrice })
+    await supplyChain.buyItem(upc, { from: distributorID, value: web3.utils.toWei('1', "ether") })
 
     // Retrieve the just now saved item from blockchain by calling function fetchItem()
     const resultBufferOne = await supplyChain.fetchItemBufferOne.call(upc)
@@ -189,12 +189,13 @@ contract('SupplyChain', function (accounts) {
     })
 
     // Mark an item as Shipped by calling function shipItem()
-    await supplyChain.shipItem(upc, { from: distributorID });
+    await supplyChain.shipItem(upc, retailerID, { from: distributorID });
 
     // Retrieve the just now saved item from blockchain by calling function fetchItem()
     const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc)
 
     // Verify the result set
+    assert.equal(resultBufferTwo.retailerID, retailerID, 'Invalid retailerID')
     assert.equal(resultBufferTwo.itemState, ShippedState, 'Invalid item State')
     assert.equal(shippedEventEmitted, true, 'Event not emitted')
   })

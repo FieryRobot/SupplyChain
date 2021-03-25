@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.js",
-    "dev": "lite-server",
+    "dev": "npm run build && lite-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

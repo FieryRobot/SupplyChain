@@ -170,7 +170,7 @@ App = {
     App.contracts.SupplyChain.deployed().then(function (instance) {
       return instance.harvestItem(
         App.upc,
-        $("#originFarmerID").val(),
+        App.metamaskAccountID,
         App.originFarmName,
         App.originFarmInformation,
         App.originFarmLatitude,
@@ -250,7 +250,7 @@ App = {
     var processId = parseInt($(event.target).data('id'));
 
     App.contracts.SupplyChain.deployed().then(function (instance) {
-      return instance.shipItem(App.upc, { from: App.metamaskAccountID });
+      return instance.shipItem(App.upc, App.metamaskAccountID, { from: App.metamaskAccountID });
     }).then(function (result) {
       $("#ftc-item").text(result);
       console.log('shipItem', result);
