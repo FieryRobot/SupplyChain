@@ -46,7 +46,16 @@ I replaced the version of truffle-contract.js with a more up-to-date one and one
 - [Sequence Diagram](diagrams/sequence.png)
 - [Class Diagram](diagrams/class.png)
 
-## Truffle Version
+## Libraries and Versions
+
+`ganache-cli` is used to run a quick and dirty local ethereum server.
+`truffle` is used here to help as a simple way to test and deploy contracts to either ganache-cli or 
+`solidity` is the contract compiler
+`nodejs` we use to help drive truffle as well as our own scripts to build the web app
+`web3` is used as the interface between a web app and an ethereum server
+`truffle-contract` is a great library to read and understand how to call contracts from the web app
+`glob` is used in our scripts to build our web app `dist` directory
+`truffle-hdwallet-provider` is used to help us get the keys for talking to the Rinkeby network.
 
 Truffle v5.1.65 (core: 5.1.65)
 Solidity - 0.5.16 (solc-js)
@@ -58,8 +67,6 @@ From `package.json`:
 "@truffle/contract": "^4.3.11",
 "glob": "^7.1.6",
 "truffle-hdwallet-provider": "^1.0.17"
-
-`glob` was used for my script to build the `dist` folder.
 
 ## IPFS
 
