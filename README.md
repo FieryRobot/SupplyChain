@@ -26,7 +26,7 @@ I've modified the scripts to build a `dist` directory to run the application out
 
 You can see any output in the inspector in Chrome, e.g. The easiest way to use it is to just create a metamask account using the contract owner's private key and you can then step through every stage of the supply chain process. This is because the contract owner is naturally a member of every role. 
 
-I wanted to allow you to set the address of each actor along the way and assign them roles, but I felt that would be to complex to test.
+You can leave he top section blank if you want to just use the contract owner to run through the states. Otherwise, you can assign accounts here for each of the roles (do this using the contract owner account). Just make sure to import and switch to the right account before clicking the buttons that require that account. If you add accounts here you will see the transactions at the bottom showing the additions happening.
 
 ## Code Notes
 
@@ -35,6 +35,8 @@ I wasn't really sure what to do with `Ownable`. The rubric says to make sure it'
 I put in extra checks to ensure that, for example, the farmer ID passed in when harvesting MUST be the farmer that also processes, packs, etc.
 
 I also changed shipItem() to take the address of the desired Retailer. This helps us validate that that receiver is the ONLY entity that can take receipt of the goods.
+
+I changed adding a role to not require that the address not exist. That was a little too extreme, and I can't think of any reason why it would be bad to add the same account to the same role twice.
 
 I replaced the version of truffle-contract.js with a more up-to-date one and one that matched my version of web3.
 
@@ -61,15 +63,12 @@ From `package.json`:
 
 ## Rinkeby Deployment
 
-Contract can be seen here: https://rinkeby.etherscan.io/address/0x3B11d38754db7d0Cf1ef452b7D87258166906575
+Contract can be seen here: https://rinkeby.etherscan.io/address/0x56e9ED1D31c2e57C66e3097a0E40F3FF8BDC61be
 
 ```
 Compiling your contracts...
 ===========================
-> Compiling ./contracts/coffeebase/SupplyChain.sol
-> Artifacts written to /Users/voas/src/blockchain/nd1309-Project-6b-Example-Template-master/project-6/build/contracts
-> Compiled successfully using:
-   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
+> Everything is up to date, there is nothing to compile.
 
 
 
@@ -85,10 +84,10 @@ Migrations dry-run (simulation)
 
    Replacing 'Migrations'
    ----------------------
-   > block number:        8299888
-   > block timestamp:     1616731725
+   > block number:        8300378
+   > block timestamp:     1616739074
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.627648214
+   > balance:             18.575257244
    > gas used:            210237 (0x3353d)
    > gas price:           10 gwei
    > value sent:          0 ETH
@@ -103,71 +102,71 @@ Migrations dry-run (simulation)
 
    Replacing 'FarmerRole'
    ----------------------
-   > block number:        8299890
-   > block timestamp:     1616731731
+   > block number:        8300380
+   > block timestamp:     1616739080
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.624240124
-   > gas used:            313446 (0x4c866)
+   > balance:             18.571929114
+   > gas used:            305450 (0x4a92a)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00313446 ETH
+   > total cost:          0.0030545 ETH
 
 
    Replacing 'DistributorRole'
    ---------------------------
-   > block number:        8299891
-   > block timestamp:     1616731736
+   > block number:        8300381
+   > block timestamp:     1616739085
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.621090544
-   > gas used:            314958 (0x4ce4e)
+   > balance:             18.568859434
+   > gas used:            306968 (0x4af18)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00314958 ETH
+   > total cost:          0.00306968 ETH
 
 
    Replacing 'RetailerRole'
    ------------------------
-   > block number:        8299892
-   > block timestamp:     1616731741
+   > block number:        8300382
+   > block timestamp:     1616739089
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.617947324
-   > gas used:            314322 (0x4cbd2)
+   > balance:             18.565796114
+   > gas used:            306332 (0x4ac9c)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00314322 ETH
+   > total cost:          0.00306332 ETH
 
 
    Replacing 'ConsumerRole'
    ------------------------
-   > block number:        8299893
-   > block timestamp:     1616731746
+   > block number:        8300383
+   > block timestamp:     1616739094
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.614804104
-   > gas used:            314322 (0x4cbd2)
+   > balance:             18.562732794
+   > gas used:            306332 (0x4ac9c)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00314322 ETH
+   > total cost:          0.00306332 ETH
 
 
    Replacing 'SupplyChain'
    -----------------------
-   > block number:        8299894
-   > block timestamp:     1616731760
+   > block number:        8300384
+   > block timestamp:     1616739108
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.579739244
-   > gas used:            3506486 (0x358136)
+   > balance:             18.527779694
+   > gas used:            3495310 (0x35558e)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.03506486 ETH
+   > total cost:          0.0349531 ETH
 
    -------------------------------------
-   > Total cost:          0.04763534 ETH
+   > Total cost:          0.04720392 ETH
 
 
 Summary
 =======
 > Total deployments:   6
-> Final cost:          0.04973771 ETH
+> Final cost:          0.04930629 ETH
 
 
 
@@ -185,13 +184,13 @@ Starting migrations...
 
    Replacing 'Migrations'
    ----------------------
-   > transaction hash:    0xc2beadc4b54e62343b9cef3663604745a27876e41773f044ef5bfa3bf8e10c7d
-   > Blocks: 1            Seconds: 12
-   > contract address:    0x05bE1e5035c44CDf809949d16326212976Ba2488
-   > block number:        8299891
-   > block timestamp:     1616731781
+   > transaction hash:    0xba7688ce41752bed3a10988dd6aeef16428bb0019427040bbe47cfce06315f39
+   > Blocks: 1            Seconds: 16
+   > contract address:    0xdD451d66F36F64243a3A793075473596c2C21D0d
+   > block number:        8300381
+   > block timestamp:     1616739133
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.627485214
+   > balance:             18.575094244
    > gas used:            226537 (0x374e9)
    > gas price:           10 gwei
    > value sent:          0 ETH
@@ -209,87 +208,87 @@ Starting migrations...
 
    Replacing 'FarmerRole'
    ----------------------
-   > transaction hash:    0x39411df158bd2f05815285bfc071f8217d96dd1dd0fdbb49a81667cedd52ff36
+   > transaction hash:    0x4425e1432b7cd59bac6d34b6e729d4c603df10a3e9c520baa862398b39ba7e42
    > Blocks: 1            Seconds: 12
-   > contract address:    0xf93fA572B464B753cCCffF0b88478C30FFdCFA0a
-   > block number:        8299893
-   > block timestamp:     1616731811
+   > contract address:    0x3d8f593890ab0c858D2cc22AC084433E2E4b7bAD
+   > block number:        8300383
+   > block timestamp:     1616739163
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.623737124
-   > gas used:            329046 (0x50556)
+   > balance:             18.571419114
+   > gas used:            321750 (0x4e8d6)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00329046 ETH
+   > total cost:          0.0032175 ETH
 
 
    Replacing 'DistributorRole'
    ---------------------------
-   > transaction hash:    0xca4e9b2cc037c2909e65af21e493e10220563a12fb9e7737e177e1cc00b8b972
+   > transaction hash:    0x24ac5005a24dd0e10c96067aad4ebb448333972a408e0c79110e9e023f33dbe2
    > Blocks: 1            Seconds: 12
-   > contract address:    0x70267150540E1E4F697B035D10fe10F214a72211
-   > block number:        8299894
-   > block timestamp:     1616731826
+   > contract address:    0x29209348C534480eB3D9517dCb9556Cab3A0B045
+   > block number:        8300384
+   > block timestamp:     1616739178
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.620431544
-   > gas used:            330558 (0x50b3e)
+   > balance:             18.568186434
+   > gas used:            323268 (0x4eec4)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00330558 ETH
+   > total cost:          0.00323268 ETH
 
 
    Replacing 'RetailerRole'
    ------------------------
-   > transaction hash:    0xbb1c465ae2a2b5abec39b556772ade2518fc1d3e053736fe860cd11a5be4f2af
+   > transaction hash:    0xcc2c91b1e325676f8f9d565f7e2eb5ad96905a50063bdd5e8d69426fd1a7aa97
    > Blocks: 1            Seconds: 12
-   > contract address:    0xb99ca766db7a44f4B64a7356a29c1443E6AC0442
-   > block number:        8299895
-   > block timestamp:     1616731841
+   > contract address:    0x9a700845De9CE219b7F47955eb8074A43C932158
+   > block number:        8300385
+   > block timestamp:     1616739193
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.617132324
-   > gas used:            329922 (0x508c2)
+   > balance:             18.564960114
+   > gas used:            322632 (0x4ec48)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00329922 ETH
+   > total cost:          0.00322632 ETH
 
 
    Replacing 'ConsumerRole'
    ------------------------
-   > transaction hash:    0x263de85c5750bf97bcda0ee30dcc88cb72cd560ad65f515f7101992e207872a6
+   > transaction hash:    0x3219609d2246887e8bb3385b1febb40e6a064d4bd309379fdcd38b82865665a3
    > Blocks: 1            Seconds: 12
-   > contract address:    0x0CB2511cC0D454AE3b0c6B67dee554eeA8Bcf393
-   > block number:        8299896
-   > block timestamp:     1616731856
+   > contract address:    0xf6BafAC595266474C871c0c509BD756cb1bb5e04
+   > block number:        8300386
+   > block timestamp:     1616739208
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.613833104
-   > gas used:            329922 (0x508c2)
+   > balance:             18.561733794
+   > gas used:            322632 (0x4ec48)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.00329922 ETH
+   > total cost:          0.00322632 ETH
 
 
    Replacing 'SupplyChain'
    -----------------------
-   > transaction hash:    0x4f115c396bf9a06762182243621ec7a7f0247d6f5c270ba26bbaa18ddb2f5eb7
-   > Blocks: 1            Seconds: 12
-   > contract address:    0x3B11d38754db7d0Cf1ef452b7D87258166906575
-   > block number:        8299897
-   > block timestamp:     1616731871
+   > transaction hash:    0x890cca3fa1f25ce4b0a684067b699afb211d5ae3090990b215f3189e626ddfb4
+   > Blocks: 0            Seconds: 12
+   > contract address:    0x56e9ED1D31c2e57C66e3097a0E40F3FF8BDC61be
+   > block number:        8300387
+   > block timestamp:     1616739223
    > account:             0x8b203EAfa190fFEbd47cb08504006f6ce4ADbBf7
-   > balance:             18.577646244
-   > gas used:            3618686 (0x37377e)
+   > balance:             18.525630694
+   > gas used:            3610310 (0x3716c6)
    > gas price:           10 gwei
    > value sent:          0 ETH
-   > total cost:          0.03618686 ETH
+   > total cost:          0.0361031 ETH
 
 
    > Saving migration to chain.
    > Saving artifacts
    -------------------------------------
-   > Total cost:          0.04938134 ETH
+   > Total cost:          0.04900592 ETH
 
 
 Summary
 =======
 > Total deployments:   6
-> Final cost:          0.05164671 ETH```
+> Final cost:          0.05127129 ETH
 ```
