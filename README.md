@@ -61,6 +61,11 @@ From `package.json`:
 
 `glob` was used for my script to build the `dist` folder.
 
+## IPFS
+
+I put this onto IPFS (where everything is forever) here: http://gateway.ipfs.io//ipfs/k51qzi5uqu5dju1ixq48p13sovzgu8sn8ltwqh1kpnyjff5uelrt6kqw327spx
+(However, the gateway was telling me "unrecognized object type: 114" but I wanted to submit anyway.)
+
 ## Rinkeby Deployment
 
 Contract can be seen here: https://rinkeby.etherscan.io/address/0x56e9ED1D31c2e57C66e3097a0E40F3FF8BDC61be
