@@ -126,40 +126,128 @@ App = {
 
     App.getMetamaskAccountID();
 
-    var processId = parseInt($(event.target).data('id'));
-    console.log('processId', processId);
+    var buttonId = event.target.id
+    console.log(buttonId);
+    if (buttonId == 'add-farmer') {
+      return App.addFarmer(event);
+    } else if (buttonId == 'add-distributor') {
+      return App.addDistributor(event);
+    } else if (buttonId == 'add-retailer') {
+      return App.addRetailer(event);
+    } else if (buttonId == 'add-consumer') {
+      return App.addConsumer(event);
+    } else {
+      var processId = parseInt($(event.target).data('id'));
+      console.log('processId', processId);
 
-    switch (processId) {
-      case 1:
-        return await App.harvestItem(event);
-        break;
-      case 2:
-        return await App.processItem(event);
-        break;
-      case 3:
-        return await App.packItem(event);
-        break;
-      case 4:
-        return await App.sellItem(event);
-        break;
-      case 5:
-        return await App.buyItem(event);
-        break;
-      case 6:
-        return await App.shipItem(event);
-        break;
-      case 7:
-        return await App.receiveItem(event);
-        break;
-      case 8:
-        return await App.purchaseItem(event);
-        break;
-      case 9:
-        return await App.fetchItemBufferOne(event);
-        break;
-      case 10:
-        return await App.fetchItemBufferTwo(event);
-        break;
+      switch (processId) {
+        case 1:
+          return await App.harvestItem(event);
+          break;
+        case 2:
+          return await App.processItem(event);
+          break;
+        case 3:
+          return await App.packItem(event);
+          break;
+        case 4:
+          return await App.sellItem(event);
+          break;
+        case 5:
+          return await App.buyItem(event);
+          break;
+        case 6:
+          return await App.shipItem(event);
+          break;
+        case 7:
+          return await App.receiveItem(event);
+          break;
+        case 8:
+          return await App.purchaseItem(event);
+          break;
+        case 9:
+          return await App.fetchItemBufferOne(event);
+          break;
+        case 10:
+          return await App.fetchItemBufferTwo(event);
+          break;
+      }
+    }
+  },
+
+  addFarmer: function (event) {
+    event.preventDefault();
+
+    var farmerID = $("#farmerID").val();
+    if (farmerID.length > 0) {
+      App.contracts.SupplyChain.deployed().then(function (instance) {
+        return instance.addFarmer(
+          farmerID,
+          { from: App.metamaskAccountID }
+        );
+      }).then(function (result) {
+        $("#ftc-item").text(result);
+        console.log('addFarmer', result);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
+  },
+
+  addDistributor: function (event) {
+    event.preventDefault();
+
+    var farmerID = $("#distributorID").val();
+    if (farmerID.length > 0) {
+      App.contracts.SupplyChain.deployed().then(function (instance) {
+        return instance.addDistributor(
+          farmerID,
+          { from: App.metamaskAccountID }
+        );
+      }).then(function (result) {
+        $("#ftc-item").text(result);
+        console.log('addDistributor', result);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
+  },
+
+  addRetailer: function (event) {
+    event.preventDefault();
+
+    var farmerID = $("#retailerID").val();
+    if (farmerID.length > 0) {
+      App.contracts.SupplyChain.deployed().then(function (instance) {
+        return instance.addRetailer(
+          farmerID,
+          { from: App.metamaskAccountID }
+        );
+      }).then(function (result) {
+        $("#ftc-item").text(result);
+        console.log('addRetailer', result);
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
+  },
+
+  addConsumer: function (event) {
+    event.preventDefault();
+
+    var farmerID = $("#consumerID").val();
+    if (farmerID.length > 0) {
+      App.contracts.SupplyChain.deployed().then(function (instance) {
+        return instance.addConsumer(
+          farmerID,
+          { from: App.metamaskAccountID }
+        );
+      }).then(function (result) {
+        $("#ftc-item").text(result);
+        console.log('addConsumer', result);
+      }).catch(function (err) {
+        console.log(err);
+      });
     }
   },
 

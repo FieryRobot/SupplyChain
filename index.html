@@ -17,6 +17,39 @@
   </div>
 
   <div id="ftc-harvest">
+    <h2>Key Actors</h2>
+    <div class="form-group">
+      You can leave this section blank if you want to just use the contract owner to run through the states. Otherwise,
+      you can assign accounts here for each of the roles (do this using the contract owner account). Just make sure to
+      import and switch to
+      the right account before clicking the buttons that require that account. If you add accounts here you will see the
+      transactions at the bottom.
+    </div>
+    <div class="form-group">
+      FarmerID <br />
+      <div class="grid-container">
+        <input class="input-field" type="text" id="farmerID"><br>
+        <button class="actor-button" id="add-farmer" type="button">Add Farmer</button>
+      </div>
+      DistributorID
+      <br>
+      <div class="grid-container">
+        <input class="input-field" type="text" id="distributorID"><br>
+        <button class="actor-button" id="add-distributor" type="button">Add Distributor</button>
+      </div>
+      Retailer ID
+      <br>
+      <div class="grid-container">
+        <input class="input-field" type="text" id="retailerID"><br>
+        <button class="actor-button" id="add-retailer" type="button">Add Retailer</button>
+      </div>
+      Consumer ID
+      <br>
+      <div class="grid-container">
+        <input class="input-field" type="text" id="consumerID"><br>
+        <button class="actor-button" id="add-consumer" type="button">Add Consumer</button>
+      </div>
+    </div>
     <h2>Product Overview</h2>
     <div class="form-group">
       SKU
@@ -25,9 +58,6 @@
       UPC
       <br>
       <input type="number" id="upc" name="upc" value=1><br>
-      Current Owner ID
-      <br>
-      <input type="text" id="ownerID" name="ownerID" value="0x963865f57804b38459dd4b2da2f760211a200438" size="50"><br>
       <div class=button-div>
         <button class="btn-fetchOne" id="button" type="button" data-id="9">Fetch Data 1</button>
         <button class="btn-fetchTwo" id="button" type="button" data-id="10">Fetch Data 2</button>
@@ -36,10 +66,6 @@
     <div class=form-break></div>
     <h2>Farm Details</h2>
     <div class="form-group">
-      Farmer ID
-      <br>
-      <input type="text" id="originFarmerID" name="originFarmerID" value="0x99c289eb2aacec289631a5ddf62cf27a63d4494f"
-        size="50"><br>
       Farm Name
       <br>
       <input type="text" id="originFarmName" name="originFarmName" value="John Doe"><br>
@@ -67,19 +93,6 @@
       Product Price
       <br>
       <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
-      Distributor ID
-      <br>
-      <input type="text" id="distributorID" name="distributorID" value="0xf1b1bcd24dad92303dd9fe78be639f7bcf9c238d"
-        size="50">
-      <br>
-      Retailer ID
-      <br>
-      <input type="text" id="retailerID" name="retailerID" value="0x0fb2bfefd526966c87efa19f6693d50971763fc2"
-        size="50"><br>
-      Distributor ID
-      <br>
-      <input type="text" id="consumerID" name="consumerID" value="0x5d777e9127b28fb119e81a6304278a0a21bef1c4"
-        size="50"><br>
       <br>
       <button class="btn-buy" id="button" type="button" data-id="5">Buy</button>
       <button class="btn-ship" id="button" type="button" data-id="6">Ship</button>

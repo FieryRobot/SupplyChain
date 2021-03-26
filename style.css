@@ -15,7 +15,7 @@ body {
 }
 
 input {
-    width: 80%;
+    width: 70%;
     padding: 12px 20px;
     margin: 10px 0;
 }
@@ -29,8 +29,9 @@ button {
     font-size: 16px;
     padding: 16px 32px;
     text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
+    margin: 10px 2px;
+    display:inline;
+    align-items:initial;
 }
 
 .sell { 
@@ -63,4 +64,13 @@ button {
 
 .horizontal-rule {
   background-color:#BDBDBD;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.actor-button {
+  width: 190px;
 }
