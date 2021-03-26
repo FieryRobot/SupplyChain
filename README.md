@@ -63,8 +63,7 @@ From `package.json`:
 
 ## IPFS
 
-I put this onto IPFS (where everything is forever) here: http://gateway.ipfs.io//ipfs/k51qzi5uqu5dju1ixq48p13sovzgu8sn8ltwqh1kpnyjff5uelrt6kqw327spx
-(However, the gateway was telling me "unrecognized object type: 114" but I wanted to submit anyway.)
+I put this onto IPFS (where everything is forever) here: https://gateway.ipfs.io/ipns/k51qzi5uqu5dju1ixq48p13sovzgu8sn8ltwqh1kpnyjff5uelrt6kqw327spx/
 
 ## Rinkeby Deployment
 
